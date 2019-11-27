@@ -27,3 +27,4 @@ Rails.application.routes.draw do
   get '/reservation_time/:date' => "reservations#time", as: "reservation_time"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
