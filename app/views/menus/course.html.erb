@@ -37,40 +37,33 @@
 				<p class="btn_reservation">予約する ></p>
 			</div>
 
-			</div>
 
 
 
-
-	<div class="contents">
-	<% @menus.each do |menu|%>
-
-		<h3><%= menu.menu_title %></h3>
-
-		<div class="course_description">
-		<p class="course_photo"><%= attachment_image_tag menu, :menu_image,  format: 'jpeg', fallback: "/images/no_image.jpg", size: "100x100" %></p>
-		<p class="course_text"><%= menu.introduce %></p>
-		</div>
-		
-		<p style="background-color: yellow; padding:5px 10px; display: inline-block; float: right;"><%= link_to "削除", renew_menu_path(menu.id, permission: true), delete: "menu", method: :delete,"data-confirm" => "本当に削除しますか？" %></p>
-		<p style="background-color: yellow; padding:5px 10px; display: inline-block; float: right; margin-right: 5px;"><%= link_to "編集", renew_menu_path(menu.id) %></p>
-		<%#= link_to "削除", renew_menu_path(menu.id), delete: "menu", method: :delete,"data-confirm" => "本当に削除しますか？" %>
+<% @menus.each do |menu|%><h3><%= menu.menu_title %></h3>
+<p style="background-color: orange; padding:5px 10px; display: inline-block; float: right;"><%= link_to "削除", renew_menu_path(menu.id, permission: true), delete: "menu", method: :delete,"data-confirm" => "本当に削除しますか？" %></p>
+	<p style="background-color: orange; padding:5px 10px; display: inline-block; float: right; margin-right: 5px;"><%= link_to "編集", renew_menu_path(menu.id) %></p>
+		<%#= link_to "削除", renew_menu_path(menu.id), delete: "menu", method: :delete,"data-confirm" => "本当に削除しますか？" %><p style="clear:both;"></p>
+	<div class="course_description">
+	<p class="course_photo"><%= attachment_image_tag menu, :menu_image,  format: 'jpeg', fallback: "/images/no_image.jpg" %></p>
+	<p class="course_text"><%= menu.introduce %></p>
+	</div>
 	
-
-	<div class="course_box" style="clear: both;">
-		<% menu.courses.each do |course| %>
-			<dl><dt><%= course.course_name %></dt>
+	
+	
+<% menu.courses.each do |course| %>
+	<div class="course_box">
+		<dl><dt><%= course.course_name %></dt>
 			<dd><%= course.course_time %>分</dd>
 			<dd><%= course.price %>円</dd> </dd>
 		</dl>
-			
 	</div>
-			<p style="background-color: yellow; padding:5px 10px; display: inline-block; float: right;"><%= link_to "削除", renew_menu_path(course.id, permission: false), delete: "course", method: :delete,"data-confirm" => "本当に削除しますか？" %></p>
-			<p style="background-color: yellow; padding:5px 10px; display: inline-block; float: right; margin-right: 5px;"><%= link_to "編集", edit_menu_path(course.id) %></p>
-			
+			<p style="background-color: yellow; padding:5px 10px; display: inline-block; float: right;"><%= link_to "削除", renew_menu_path(menu.id, permission: true), delete: "menu", method: :delete,"data-confirm" => "本当に削除しますか？" %></p>
+	<p style="background-color: yellow; padding:5px 10px; display: inline-block; float: right; margin-right: 5px;"><%= link_to "編集", renew_menu_path(menu.id) %></p>
+		<%#= link_to "削除", renew_menu_path(menu.id), delete: "menu", method: :delete,"data-confirm" => "本当に削除しますか？" %>
+	<p style="clear:both;"></p>
 		<% end %>
-			</div>	
-<div class="hidden_box contents">
+<div class="hidden_box">
     <label for="label1">コースを追加</label>
     <input type="checkbox" id="label1" style="display: none;"/>
     <div class="hidden_show" style="clear: both;">
@@ -86,8 +79,10 @@
 			 </dl> 
 	      </div>
 	        <%= f.submit "追加する" %>
+	</div>
+</div>   
 	    <% end %>
-<p class="btn_reservation"><a href="/reservations">予約する ></a></p>
+		<a href="/reservations"  class="btn_reservation" style="#ffffff;">予約する ></a>
 	<% end %>
 	
 	</div>
